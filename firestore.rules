@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function userDoc() { return get(/databases/$(database)/documents/users/$(request.auth.uid)); }
+    function approved() { return signedIn() && userDoc().data.status == "approved"; }
+    function roleIs(role) { return approved() && userDoc().data.role == role; }
+
+    // Starter deny-by-default policy. Replace only after the schema and Cloud
+    // Functions have been implemented and security-tested. Do not deploy this
+    // file as the final production rules.
+    match /{document=**} { allow read, write: if false; }
+  }
+}
