@@ -1,41 +1,35 @@
-# KWARAPOLY Smart Attendance — Starter v0.1
+# KWARAPOLY Smart Attendance — Rebuild v1.0
 
-## What this package is
-A responsive, clickable front-end prototype for the proposed Kwara State Polytechnic attendance system. It previews navigation, registration fields, role dashboards, course setup, attendance records and settings.
+This is a fresh mobile-responsive application foundation for the proposed KWARAPOLY Smart Attendance System.
 
-**It is not connected to Firebase yet.** Registration data is saved only in the browser's local storage. QR creation, QR scanning, camera capture, face verification, location verification, real authentication and secure attendance writes are placeholders and are not functional in this version.
+## Open the prototype
+1. Upload the contents of this folder to the root of a GitHub repository.
+2. In GitHub, open Settings → Pages.
+3. Under Build and deployment, select Deploy from a branch.
+4. Select `main` and `/ (root)`, then Save.
+5. Open the Pages URL GitHub provides.
 
-Use fictional test data only. Do not enter real student or staff records.
+## What works in this version
+- Responsive dashboard and navigation.
+- Preview role selector for Super Admin, Lecturer and Student.
+- Fictional student record entry in the current browser session.
+- Course catalogue entry in the current browser session.
+- Preview attendance session creation.
+- Preview announcements.
+- Academic structure, report and security requirement screens.
 
-## Run the prototype
-1. Extract the ZIP.
-2. Open `index.html` in a modern browser.
-3. On a phone, open the extracted folder with a local web server or upload the files to a temporary static host. Camera access generally requires HTTPS or localhost.
-4. Test Overview, Registration, Dashboard, Courses & classes, Attendance and Settings.
+## What is NOT live yet
+This is a front-end development foundation, not an approved production attendance system. It does not yet provide real authentication, persistent database writes, server-validated QR attendance, live camera scanning, face matching/liveness, secure exports, or production role permissions. Preview records are held only in browser memory and disappear when the page is refreshed.
 
-## Next implementation stage
-Create a NEW Firebase project dedicated to KWARAPOLY. Do not reuse the MuizMarket Firebase project.
-Enable:
-- Email/password Authentication
-- Cloud Firestore
-- Firebase Storage
-- Cloud Functions (for trusted QR/session validation and privileged actions)
-- App Check
+## Production build requirements
+- Dedicated Firebase project (do not reuse another business app project).
+- Firebase Authentication with verified accounts.
+- Firestore schema and reviewed security rules.
+- Cloud Functions for privileged actions, short-lived random QR tokens, attendance validation and audit logging.
+- App Check and rate limiting.
+- Approved school roster and course-registration imports.
+- Consent, data minimization, retention/deletion policy and an accessible alternative to camera verification.
+- Official KWARAPOLY approval, branding and academic directory validation before real deployment.
 
-Then implement and test the database schema, role provisioning, admin approval, official academic catalogue, student/course enrolment, signed short-lived QR sessions, duplicate prevention, audit logs and privacy/retention controls.
-
-## Production safeguards
-- Do not allow users to self-assign Super Admin or Lecturer privileges.
-- Admin accounts must be provisioned securely, not through public registration.
-- Validate matric numbers against an approved school roster or registrar-provided data.
-- Do not trust browser time, browser location, or client-written attendance status.
-- QR tokens must be random, short-lived, session-bound and validated server-side.
-- Face matching/liveness is not included. A selfie capture alone is not identity verification.
-- Location should be optional and proportionate, with clear notice and an alternative process for students who cannot share location.
-- Keep an audit trail for attendance edits and admin actions.
-- Confirm the Polytechnic's official logo, institute/department list, course catalogue and data-protection requirements before launch.
-
-## Included files
-- `index.html` — responsive prototype
-- `firestore.rules` — deny-by-default starter rules (intentionally not production-ready)
-- `README.md` — setup and implementation notes
+## Safety
+Use fictional test data only. Do not upload real student records, photographs, biometric templates, passwords, or staff data to this prototype or a public GitHub repository. Do not deploy the deny-all Firestore rules as a substitute for a completed security design; they intentionally block all client access.
